@@ -10,9 +10,26 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+require("bufferline").setup({
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = function()
+                    return vim.fn.getcwd()
+                end,
+                text_align = "left",
+                separator = true
+            }
+        },
+    }
+})
 
--- empty setup using defaults
-require("nvim-tree").setup()
+require("toggleterm").setup({
+    open_mapping = [[<c-\>]],
+    direction = 'float',
+    float_opts = { border = 'single' },
+})
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -27,5 +44,14 @@ require("nvim-tree").setup({
     },
     filters = {
         dotfiles = true,
+    },
+})
+
+require("telescope").setup({})
+
+require("lspconfig").clangd.setup({
+    cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+    init_options = {
+        fallbackFlags = { '-std=c++17' },
     },
 })
