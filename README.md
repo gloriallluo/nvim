@@ -1,0 +1,3 @@
+# nvim
+
+Path: `~/.config/nvim`.
