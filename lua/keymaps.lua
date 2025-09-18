@@ -10,10 +10,10 @@ local opts = {
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+-- vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+-- vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+-- vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+-- vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- Resize with arrows
 -- delta: 2 lines
@@ -28,10 +28,10 @@ vim.keymap.set('n', '<C-]>', ':BufferLineCycleNext<CR>', opts)
 
 -- Telescope
 local telescope_builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', telescope_builtin.find_files, opts)
-vim.keymap.set('n', '<leader>g', telescope_builtin.live_grep, opts)
-vim.keymap.set('n', '<leader>b', telescope_builtin.buffers, opts)
-vim.keymap.set('n', '<leader>h', telescope_builtin.help_tags, opts)
+vim.keymap.set('n', '<C-f>', telescope_builtin.find_files, opts)
+vim.keymap.set('n', '<C-g>', telescope_builtin.live_grep, opts)
+vim.keymap.set('n', '<C-b>', telescope_builtin.buffers, opts)
+vim.keymap.set('n', '<C-h>', telescope_builtin.help_tags, opts)
 
 -----------------
 -- Visual mode --
