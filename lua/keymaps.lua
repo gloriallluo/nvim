@@ -23,15 +23,15 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
 -- Bufferline
-vim.keymap.set('n', '<S-[>', ':BufferLineCyclePrev<CR>', opts)
-vim.keymap.set('n', '<S-]>', ':BufferLineCycleNext<CR>', opts)
+vim.keymap.set('n', '<C-[>', ':BufferLineCyclePrev<CR>', opts)
+vim.keymap.set('n', '<C-]>', ':BufferLineCycleNext<CR>', opts)
 
 -- Telescope
 local telescope_builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, opts)
-vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, opts)
-vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, opts)
-vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, opts)
+vim.keymap.set('n', '<leader>f', telescope_builtin.find_files, opts)
+vim.keymap.set('n', '<leader>g', telescope_builtin.live_grep, opts)
+vim.keymap.set('n', '<leader>b', telescope_builtin.buffers, opts)
+vim.keymap.set('n', '<leader>h', telescope_builtin.help_tags, opts)
 
 -----------------
 -- Visual mode --
