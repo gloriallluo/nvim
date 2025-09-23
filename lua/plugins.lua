@@ -16,6 +16,11 @@ return require('packer').startup({
         use 'hrsh7th/cmp-cmdline'
 
         use 'hrsh7th/nvim-cmp'
+        
+        use {
+            'nvim-treesitter/nvim-treesitter', 
+            run = ':TSUpdate',
+        }
 
         use {
             'nvim-tree/nvim-tree.lua',
@@ -39,6 +44,8 @@ return require('packer').startup({
             'nvim-telescope/telescope.nvim', tag = '0.1.8',
             requires = { 'nvim-lua/plenary.nvim' },
         }
+
+        use { 'rose-pine/neovim', as = 'rose-pine' }
 
     end,
 
