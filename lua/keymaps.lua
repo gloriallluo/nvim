@@ -25,6 +25,8 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 -- Bufferline
 vim.keymap.set('n', '<C-[>', ':BufferLineCyclePrev<CR>', opts)
 vim.keymap.set('n', '<C-]>', ':BufferLineCycleNext<CR>', opts)
+vim.keymap.set('n', '<space>xh', ':BufferLineCloseLeft<CR>', opts)
+vim.keymap.set('n', '<space>xl', ':BufferLineCloseRight<CR>', opts)
 
 -- Telescope
 local telescope_builtin = require('telescope.builtin')

@@ -1,15 +1,17 @@
-require('options')
-require('keymaps')
-require('plugins')
-require('colorscheme')
-require('lsp')
-
+-- leader key
+-- vim.g.mapleader = ','
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
+require('options')
+require('plugins')
+require('keymaps')
+require('colorscheme')
+require('lsp')
 
 local cmp = require("cmp")
 cmp.setup({
@@ -90,13 +92,44 @@ require("bufferline").setup({
     }
 })
 
+require('lualine').setup({
+    options = {
+        icons_enabled = true,
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        always_show_tabline = true,
+        globalstatus = false,
+    },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { 'filename' },
+        lualine_x = { 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename'},
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    tabline = {},
+    winbar = {},
+})
+
 require("toggleterm").setup({
     open_mapping = [[<c-\>]],
     direction = 'float',
     float_opts = { border = 'single' },
 })
 
--- OR setup with some options
 require("nvim-tree").setup({
     sort = {
         sorter = "case_sensitive",
@@ -107,9 +140,7 @@ require("nvim-tree").setup({
     renderer = {
         group_empty = true,
     },
-    filters = {
-        dotfiles = true,
-    },
+    filters = {},
 })
 
 require("telescope").setup({})
@@ -123,3 +154,4 @@ vim.lsp.config("clangd", {
     },
 })
 vim.lsp.enable({"clangd"})
+
