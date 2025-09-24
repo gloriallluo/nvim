@@ -12,47 +12,9 @@ require('plugins')
 require('keymaps')
 require('colorscheme')
 require('lsp')
+require('comp')
 
-local cmp = require("cmp")
-cmp.setup({
-    mapping = cmp.mapping.preset.insert({
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-h>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-l>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
-        { name = 'path' }
-    }
-})
-
-cmp.setup.cmdline('/', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { 
-            name = 'cmdline',
-            option = {
-                ignore_cmds = { 'Man', '!' }
-            }
-        }
-    })
-})
-
-require("nvim-treesitter.configs").setup {
+require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
@@ -77,7 +39,7 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
-require("bufferline").setup({
+require('bufferline').setup({
     options = {
         offsets = {
             {
@@ -124,13 +86,13 @@ require('lualine').setup({
     winbar = {},
 })
 
-require("toggleterm").setup({
+require('toggleterm').setup({
     open_mapping = [[<c-\>]],
     direction = 'float',
     float_opts = { border = 'single' },
 })
 
-require("nvim-tree").setup({
+require('nvim-tree').setup({
     sort = {
         sorter = "case_sensitive",
     },
@@ -143,7 +105,7 @@ require("nvim-tree").setup({
     filters = {},
 })
 
-require("telescope").setup({})
+require('telescope').setup({})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config("clangd", {
@@ -154,4 +116,8 @@ vim.lsp.config("clangd", {
     },
 })
 vim.lsp.enable({"clangd"})
+
+require('mason').setup({})
+
+require('mason-lspconfig').setup({})
 

@@ -30,7 +30,35 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
+
+    --------------------
+    ---     lsp      ---
+    --------------------
+
     { 'neovim/nvim-lspconfig' },
+
+    {
+        'nvim-treesitter/nvim-treesitter', 
+        build = ':TSUpdate',
+    },
+
+    {
+        "mason-org/mason.nvim",
+        opts = {}
+    },
+
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            "mason-org/mason.nvim",
+            "neovim/nvim-lspconfig",
+        },
+    },
+
+    --------------------
+    ---  completion  ---
+    --------------------
 
     { 'hrsh7th/nvim-cmp' },
 
@@ -55,9 +83,33 @@ require("lazy").setup({
     },
 
     {
-        'nvim-treesitter/nvim-treesitter', 
-        build = ':TSUpdate',
+        'saghen/blink.cmp',
+        -- optional: provides snippets for the snippet source
+        dependencies = { 'rafamadriz/friendly-snippets' },
+
+        -- use a release tag to download pre-built binaries
+        version = '1.*',
+
+        opts = {
+            -- See :h blink-cmp-config-keymap for defining your own keymap
+            -- keymap = { preset = 'default' },
+
+            appearance = { nerd_font_variant = 'mono' },
+
+            completion = { documentation = { auto_show = true } },
+
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+
+            fuzzy = { implementation = "prefer_rust_with_warning" }
+        },
+        opts_extend = { "sources.default" }
     },
+
+    --------------------
+    ---    tools     ---
+    --------------------
 
     {
         'nvim-tree/nvim-tree.lua',
@@ -87,9 +139,9 @@ require("lazy").setup({
 
     { 'lewis6991/gitsigns.nvim' },
 
-    -------------------
-    --- colorscheme ---
-    -------------------
+    --------------------
+    --- colorscheme  ---
+    --------------------
 
     { 
         'rose-pine/neovim', 
