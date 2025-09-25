@@ -23,21 +23,4 @@ vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
 
--- Keymaps--
-
--- Unmap Ctrl + q
-vim.keymap.set("n", "<C-q>", "", defaults)
-
--- Map jj to esc
-vim.keymap.set('i', 'jj', '<esc>l', defaults)
-
--- Map leader to <Space>
-vim.keymap.set("n", " ", "<Nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
-
--- use U for redo :))
-vim.keymap.set('n', 'U', '<C-r>', {})
-
--- ToggleTerm
--- vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', {})
 

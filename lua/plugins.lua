@@ -42,18 +42,25 @@ require("lazy").setup({
         build = ':TSUpdate',
     },
 
+    { 'mason-org/mason.nvim' },
+
     {
-        "mason-org/mason.nvim",
-        opts = {}
+        'mason-org/mason-lspconfig.nvim',
+        dependencies = {
+            'mason-org/mason.nvim',
+            'neovim/nvim-lspconfig',
+        },
     },
 
     {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {},
+        'nvimdev/lspsaga.nvim',
+        config = function()
+            require('lspsaga').setup({})
+        end,
         dependencies = {
-            "mason-org/mason.nvim",
-            "neovim/nvim-lspconfig",
-        },
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+        }
     },
 
     --------------------
@@ -102,9 +109,9 @@ require("lazy").setup({
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
 
-            fuzzy = { implementation = "prefer_rust_with_warning" }
+            fuzzy = { implementation = 'prefer_rust_with_warning' }
         },
-        opts_extend = { "sources.default" }
+        opts_extend = { 'sources.default' }
     },
 
     --------------------
@@ -135,7 +142,20 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
-    { 'folke/which-key.nvim' },
+    { 
+        'folke/which-key.nvim' ,
+        event = 'VeryLazy',
+        opts = {},
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require('which-key').show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            }
+        },
+    },
 
     { 'lewis6991/gitsigns.nvim' },
 

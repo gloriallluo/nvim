@@ -22,3 +22,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, bufopts)
     end
 })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config("clangd", {
+    capabilities = capabilities,
+    cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+    init_options = {
+        fallbackFlags = { '-std=c++17' },
+    },
+})
+vim.lsp.enable({"clangd"})
+
+require('mason').setup({})
+
+require('mason-lspconfig').setup({})
+
