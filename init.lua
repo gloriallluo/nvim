@@ -12,4 +12,5 @@ require('utils.lualine')
 require('utils.telescope')
 require('utils.toggleterm')
 require('utils.which-key')
+require('utils.todo-comments')
 

@@ -42,5 +42,20 @@ wk.add({
 
     --- Nvimtree
     { '<leader>tt', '<cmd>NvimTreeToggle<cr>', mode = "n", desc = 'toggle file tree' },
+
+    --- todo-comments
+    { '<leader>todo', '<cmd>TodoTelescope<cr>', mode = "n", desc = 'search with all project todos with Telescope' },
+    { 
+        '<leader>t[', function() 
+            require('todo-comments').jump_prev()
+        end, 
+        mode = "n", desc = 'jump to prev todo message'  
+    },
+    { 
+        '<leader>t]', function() 
+            require('todo-comments').jump_next()
+        end, 
+        mode = "n", desc = 'jump to next todo message'  
+    },
 })
 
